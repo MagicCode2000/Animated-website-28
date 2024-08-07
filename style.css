@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 90px;
+    font-size: 22px;
+    z-index: 99;
+    opacity: 0;
+    animation: to-bottom 1s ease forwards;
+}
+header nav a{
+    font-size: 24px;
+    margin-left: 55px;
+    color: black;
+    transition: .3s;
+}
+header nav .active,
+header nav a:hover{
+    color: #e421a9;
+}
+.Home{
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 0 90px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #070025, #431e98);
+}
+.text-box{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    text-align: end;
+    z-index: 99;
+}
+.text-box h1{
+    color: #e421a9;
+    font-size: 82px;
+    animation: to-left 1s ease forwards 1.3s;
+}
+.text-box h1:nth-child(2){
+    color: black;
+    font-size: 66px;
+    animation-delay: 1.5s;
+}
+.text-box p{
+    margin: 40px 0;
+    font-size: 24px;
+    width: 80%;
+    color: #979797;
+    animation: to-left 1s ease forwards 1.7s;
+}
+.btn-box{
+    display: flex;
+    gap: 20px;
+}
+.btn{
+    position: relative;
+    color: black;
+    padding: 13px 35px;
+    font-size: 24px;
+    border: 2px solid #e421a9;
+    background: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .3s;
+    animation: to-left 1s ease forwards 1.9s;
+}
+.btn:hover,
+.btn:nth-child(2){
+    color: white;
+    background-color: #e421a9;
+    box-shadow: 0 0 15px #e421a9;
+}
+.btn:nth-child(2):hover{
+    color: black;
+    background: transparent;
+    box-shadow: none;
+}
+.Home img{
+    position: absolute;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+#layer{
+    top: 30%;
+    transform: translateY(-30%);
+    height: auto;
+    width: 100%;
+}
+.text-box *{
+    opacity: 0;
+}
+.text-box span{
+    opacity: 1;
+}
+/* keyframes */
+@keyframes to-bottom {
+    0%{
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes to-left {
+    0%{
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes img-load {
+    0%{
+        transform: translate(-27%, 32%);
+    }
+    100%{
+        transform: translate(0%);
+    }
+}
+.soot{
+    animation: img-load 3s ease forwards;
+}
+@keyframes rocket {
+    0%,100%{
+        transform: translate(0%);
+    }
+    50%{
+        transform: translate(-3.88%, 4.7%);
+    }
+}
+.rocket{
+    animation: rocket 6s ease-in-out infinite 3s, img-load 3s ease;
+}
+@keyframes stars-background {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: calc(var(--width) * -1) var(--height);
+    }
+}
+@keyframes stars-opacity {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.stars{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--width);
+    height: var(--height);
+    background-image: url(./stars.png);
+    background-size: 100% 100%;
+    z-index: 1;
+    opacity: 0;
+    animation: stars-background 28s linear infinite, stars-opacity 2s ease forwards .8s;
+}
